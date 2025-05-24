@@ -8,7 +8,7 @@ if UniverseId == 7028566528  then
 elseif UniverseId == 3808081382 then
     GameName = "tsb"
 end
-GameName = GameName.."script"
+GameName = GameName
 if GameName then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/dunnook/Roblox/refs/heads/main/"..GameName))()
 else
