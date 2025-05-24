@@ -1,34 +1,16 @@
-local DiscordLib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dunnook/Roblox/refs/heads/main/EditedDiscordLib")()
-local Window = DiscordLib:Window("Key System")
-local Server = Window:Server("Stagnant Hub Key System", "")
-local KeySystem = Server:Channel("Key System")
-local Key = ""
-local api = loadstring(game:HttpGet("https://sdkapi-public.luarmor.net/library.lua"))()
-api.script_id = "0abf22d9dc1307a6cf1a4a17955e312d"
-if isfile("StagnantHubKey") then
-    local status = api.check_key(readfile("StagnantHubKey"))
-    if status.code == "KEY_VALID" then
-        DiscordLib:Notification("Loading script", status.message, "Cool cool!")
-        script_key = readfile("StagnantHubKey")
-        api.load_script()
-    end
+if not getgenv then
+    function getgenv() return _G end
 end
-KeySystem:Textbox("Enter key", "Type here!", nil, false, function(Text)
-    Key = Text
-end)
-KeySystem:Button("Redeem Key", function()
-    local status = api.check_key(Key)
-    if status.code == "KEY_VALID" then
-        DiscordLib:Notification("Loading script", status.message, "Cool cool!")
-        script_key = Key
-        writefile("StagnantHubKey", Key)
-        api.load_script()
-        return
-    else
-        DiscordLib:Notification("An error happened", status.message, "Damn, alright bro!")
-    end
-end)
-KeySystem:Button("Get key (Lootlabs)", function()
-    setclipboard("https://ads.luarmor.net/get_key?for=Stagnant_Hub_Key-PbbuGEZaMelj")
-    DiscordLib:Notification("Link copied", "Link successfully copied", "Alright fam!")
-end)
+local UniverseId = game.GameId
+local GameName = ""
+if UniverseId == 7028566528  then
+    GameName = "basketballzero"
+elseif UniverseId == 3808081382 then
+    GameName = "tsb"
+end
+GameName = GameName.."script"
+if GameName then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/dunnook/Roblox/refs/heads/main/"..GameName))()
+else
+    print("Game is not supported by stagnant hub")
+end
