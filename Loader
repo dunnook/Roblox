@@ -1,4 +1,4 @@
-local DiscordLib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dunnook/Roblox-Scripts/refs/heads/main/edited%20discord%20lib%20by%20dawid")()
+local DiscordLib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dunnook/Roblox/refs/heads/main/EditedDiscordLib")()
 local Window = DiscordLib:Window("Key System")
 local Server = Window:Server("Stagnant Hub Key System", "")
 local KeySystem = Server:Channel("Key System")
