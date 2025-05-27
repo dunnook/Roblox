@@ -2326,6 +2326,7 @@ function DiscordLib:Window(text)
 							{ImageTransparency = 0}
 						):Play()
 					end
+					toggled = new_bool
 					pcall(callback, new_bool)
 				end
 				if default then
