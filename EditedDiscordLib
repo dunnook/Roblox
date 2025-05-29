@@ -2960,6 +2960,7 @@ function DiscordLib:Window(text)
 					DropTog = not DropTog
 				end
 				if default then
+					DropTog = true
 					if multi == false then
 						DropFunction:Change(type(default) == "table" and default[1] or default)
 					else
