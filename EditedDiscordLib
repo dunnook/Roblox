@@ -2278,8 +2278,7 @@ function DiscordLib:Window(text)
 				
 				ChannelHolder.CanvasSize = UDim2.new(0,0,0,ChannelHolderLayout.AbsoluteContentSize.Y)
 				function ToggleFunction:Change(new_bool)
-					toggled = not new_bool
-					if toggled == false then
+					if new_bool == true then
 						TweenService:Create(
 							Icon,
 							TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
@@ -2330,6 +2329,7 @@ function DiscordLib:Window(text)
 					pcall(callback, new_bool)
 				end
 				if default then
+					toggled = true
 					ToggleFunction:Change(default)
 				end
 				return ToggleFunction
