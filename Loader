@@ -5,8 +5,8 @@ local UniverseId = game.GameId
 local GameName = ""
 if UniverseId == 7028566528  then
     GameName = "basketballzero"
-elseif UniverseId == 3808081382 then
-    GameName = "tsb"
+elseif UniverseId == 6884266247 then
+    GameName = "animerangersx"
 end
 GameName = GameName
 if GameName then
