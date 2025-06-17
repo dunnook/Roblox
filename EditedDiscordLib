@@ -2908,7 +2908,7 @@ function DiscordLib:Window(text)
 						if multi == false then
 							selected = {textadd} -- Replace selection
 							for _, Item in next, DropItemHolder:GetChildren() do
-								if Item.Name == "Item" and Item:FindFirstChild("ItemText")
+								if Item.Name == "Item" and Item:FindFirstChild("ItemText") then
 									Item.ItemText.TextColor3 = Color3.fromRGB(212, 212, 212)
 									Item.BackgroundTransparency = 1
 								end
@@ -2977,7 +2977,7 @@ function DiscordLib:Window(text)
 					else
 						if type(new_value) == "table" then
 							for _, Item in next, DropItemHolder:GetChildren() do
-								if Item.Name == "Item" and Item:FindFirstChild("ItemText")
+								if Item.Name == "Item" and Item:FindFirstChild("ItemText") then
 									Item.ItemText.TextColor3 = Color3.fromRGB(212, 212, 212)
 									Item.BackgroundTransparency = 1
 								end
