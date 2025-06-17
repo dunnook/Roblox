@@ -2775,8 +2775,10 @@ function DiscordLib:Window(text)
 						if multi == false then
 							selected = {v} -- Replace selection
 							for _, Item in next, DropItemHolder:GetChildren() do
-								Item.ItemText.TextColor3 = Color3.fromRGB(212, 212, 212)
-								Item.BackgroundTransparency = 1
+								if Item.Name == "Item" and Item:FindFirstChild("ItemText") then
+									Item.ItemText.TextColor3 = Color3.fromRGB(212, 212, 212)
+									Item.BackgroundTransparency = 1
+								end
 							end
 							ItemText.TextColor3 = Color3.fromRGB(255,255,255)
 							Item.BackgroundTransparency = 0
@@ -2906,8 +2908,10 @@ function DiscordLib:Window(text)
 						if multi == false then
 							selected = {textadd} -- Replace selection
 							for _, Item in next, DropItemHolder:GetChildren() do
-								Item.ItemText.TextColor3 = Color3.fromRGB(212, 212, 212)
-								Item.BackgroundTransparency = 1
+								if Item.Name == "Item" and Item:FindFirstChild("ItemText")
+									Item.ItemText.TextColor3 = Color3.fromRGB(212, 212, 212)
+									Item.BackgroundTransparency = 1
+								end
 							end
 							ItemText.TextColor3 = Color3.fromRGB(255,255,255)
 							Item.BackgroundTransparency = 0
@@ -2961,7 +2965,7 @@ function DiscordLib:Window(text)
 					selected = {}
 					if multi == false then
 						for _, Item in next, DropItemHolder:GetChildren() do
-							if Item.Name == "Item" and Item.ItemText.Text == new_value then
+							if Item.Name == "Item" and Item:FindFirstChild("ItemText") and Item.ItemText.Text == new_value then
 								Item.ItemText.TextColor3 = Color3.fromRGB(255,255,255)
 								Item.BackgroundTransparency = 0
 							else
@@ -2973,12 +2977,14 @@ function DiscordLib:Window(text)
 					else
 						if type(new_value) == "table" then
 							for _, Item in next, DropItemHolder:GetChildren() do
-								Item.ItemText.TextColor3 = Color3.fromRGB(212, 212, 212)
-								Item.BackgroundTransparency = 1
+								if Item.Name == "Item" and Item:FindFirstChild("ItemText")
+									Item.ItemText.TextColor3 = Color3.fromRGB(212, 212, 212)
+									Item.BackgroundTransparency = 1
+								end
 							end
 							for _, val in ipairs(new_value) do
 								for _, Item in next, DropItemHolder:GetChildren() do
-									if Item.Name == "Item" and Item.ItemText.Text == val then
+									if Item.Name == "Item" and Item:FindFirstChild("ItemText") and Item.ItemText.Text == val then
 										Item.ItemText.TextColor3 = Color3.fromRGB(255,255,255)
 										Item.BackgroundTransparency = 0
 									end
