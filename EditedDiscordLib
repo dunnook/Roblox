@@ -2758,29 +2758,45 @@ function DiscordLib:Window(text)
 					ItemText.Text = v
 					
 					Item.MouseEnter:Connect(function()
-						ItemText.TextColor3 = Color3.fromRGB(255,255,255)
-						Item.BackgroundTransparency = 0
+						if not table.find(selected, v) then
+							ItemText.TextColor3 = Color3.fromRGB(255,255,255)
+							Item.BackgroundTransparency = 0
+						end
 					end)
 					
 					Item.MouseLeave:Connect(function()
-						ItemText.TextColor3 = Color3.fromRGB(212, 212, 212)
-						Item.BackgroundTransparency = 1
+						if not table.find(selected, v) then
+							ItemText.TextColor3 = Color3.fromRGB(212, 212, 212)
+							Item.BackgroundTransparency = 1
+						end
 					end)
 					
 					Item.MouseButton1Click:Connect(function()
 						if multi == false then
 							selected = {v} -- Replace selection
+							for _, Item in next, DropItemHolder:GetChildren() do
+								Item.ItemText.TextColor3 = Color3.fromRGB(212, 212, 212)
+								Item.BackgroundTransparency = 1
+							end
+							ItemText.TextColor3 = Color3.fromRGB(255,255,255)
+							Item.BackgroundTransparency = 0
 						else
 							-- Toggle selection
 							local found = false
 							for idx, val in ipairs(selected) do
 								if val == v then
 									table.remove(selected, idx)
+									ItemText.TextColor3 = Color3.fromRGB(212, 212, 212)
+									Item.BackgroundTransparency = 1
+									print("BG: "..Item.BackgroundTransparency)
 									found = true
 									break
 								end
 							end
 							if not found then
+								ItemText.TextColor3 = Color3.fromRGB(255,255,255)
+								Item.BackgroundTransparency = 0
+								print("BG: "..Item.BackgroundTransparency)
 								table.insert(selected, v)
 							end
 						end
@@ -2889,18 +2905,30 @@ function DiscordLib:Window(text)
 					Item.MouseButton1Click:Connect(function()
 						if multi == false then
 							selected = {textadd} -- Replace selection
+							for _, Item in next, DropItemHolder:GetChildren() do
+								Item.ItemText.TextColor3 = Color3.fromRGB(212, 212, 212)
+								Item.BackgroundTransparency = 1
+							end
+							ItemText.TextColor3 = Color3.fromRGB(255,255,255)
+							Item.BackgroundTransparency = 0
 						else
 							-- Toggle selection
 							local found = false
 							for idx, val in ipairs(selected) do
 								if val == textadd then
 									table.remove(selected, idx)
+									ItemText.TextColor3 = Color3.fromRGB(212, 212, 212)
+									Item.BackgroundTransparency = 1
+									print("BG: "..Item.BackgroundTransparency)
 									found = true
 									break
 								end
 							end
 							if not found then
 								table.insert(selected, textadd)
+								ItemText.TextColor3 = Color3.fromRGB(255,255,255)
+								Item.BackgroundTransparency = 0
+								print("BG: "..Item.BackgroundTransparency)
 							end
 						end
 						
@@ -2932,18 +2960,31 @@ function DiscordLib:Window(text)
 				function DropFunction:Change(new_value)
 					selected = {}
 					if multi == false then
-						if type(new_value) == "table" then
-							selected = {new_value[1]}
-						else
-							selected = {new_value}
+						for _, Item in next, DropItemHolder:GetChildren() do
+							if Item.Name == "Item" and Item.ItemText.Text == new_value then
+								Item.ItemText.TextColor3 = Color3.fromRGB(255,255,255)
+								Item.BackgroundTransparency = 0
+							else
+								Item.ItemText.TextColor3 = Color3.fromRGB(212, 212, 212)
+								Item.BackgroundTransparency = 1
+							end
 						end
+						selected = {new_value}
 					else
 						if type(new_value) == "table" then
+							for _, Item in next, DropItemHolder:GetChildren() do
+								Item.ItemText.TextColor3 = Color3.fromRGB(212, 212, 212)
+								Item.BackgroundTransparency = 1
+							end
 							for _, val in ipairs(new_value) do
+								for _, Item in next, DropItemHolder:GetChildren() do
+									if Item.Name == "Item" and Item.ItemText.Text == val then
+										Item.ItemText.TextColor3 = Color3.fromRGB(255,255,255)
+										Item.BackgroundTransparency = 0
+									end
+								end
 								table.insert(selected, val)
 							end
-						else
-							table.insert(selected, new_value)
 						end
 					end
 					
