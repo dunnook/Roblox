@@ -2968,7 +2968,7 @@ function DiscordLib:Window(text)
 							if Item.Name == "Item" and Item:FindFirstChild("ItemText") and Item.ItemText.Text == new_value then
 								Item.ItemText.TextColor3 = Color3.fromRGB(255,255,255)
 								Item.BackgroundTransparency = 0
-							else
+							elseif Item.Name == "Item" and Item:FindFirstChild("ItemText") then
 								Item.ItemText.TextColor3 = Color3.fromRGB(212, 212, 212)
 								Item.BackgroundTransparency = 1
 							end
