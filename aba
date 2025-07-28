@@ -1,1 +1,1 @@
-game:GetService("ReplicatedStorage").NanamiCheck.OnClientEvent = function() return true end
+game:GetService("ReplicatedStorage").NanamiCheck.OnClientInvoke = function() return true end
