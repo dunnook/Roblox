@@ -86,7 +86,6 @@ local Label = Instance.new("TextButton")
 local LabelTitle = Instance.new("TextLabel")
 
 Label.Name = "Label"
-Label.Parent = ChannelHolder
 Label.BackgroundColor3 = Color3.fromRGB(54, 57, 63)
 Label.BorderSizePixel = 0
 Label.Position = UDim2.new(0.261979163, 0, 0.190789461, 0)
@@ -104,7 +103,7 @@ LabelTitle.BackgroundTransparency = 1.000
 LabelTitle.Position = UDim2.new(0, 5, 0, 0)
 LabelTitle.Size = UDim2.new(0, 200, 0, 30)
 LabelTitle.Font = Enum.Font.Gotham
-LabelTitle.Text = text
+LabelTitle.Text = ""
 LabelTitle.TextColor3 = Color3.fromRGB(127, 131, 137)
 LabelTitle.TextSize = 14.000
 LabelTitle.TextXAlignment = Enum.TextXAlignment.Left
@@ -3376,6 +3375,9 @@ function DiscordLib:Window(text)
 				local LabelTitle = LabelTitle:Clone()
 				local LabelFunction = {}
 				
+				Label.Parent = ChannelHolder
+				LabelTitle.Text = text
+
 				ChannelHolder.CanvasSize = UDim2.new(0,0,0,ChannelHolderLayout.AbsoluteContentSize.Y)
 				function LabelFunction:Change(new_text)
 					print(pcall(function() LabelTitle.Text = new_text end))
