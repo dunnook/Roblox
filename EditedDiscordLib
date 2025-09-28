@@ -81,7 +81,7 @@ local function MakeDraggable(topbarobject, object)
 	)
 end
 
--- LabelTemplate
+-- Label Template
 local Label = Instance.new("TextButton")
 local LabelTitle = Instance.new("TextLabel")
 
@@ -97,7 +97,6 @@ Label.TextColor3 = Color3.fromRGB(255, 255, 255)
 Label.TextSize = 14.000
 
 LabelTitle.Name = "LabelTitle"
-LabelTitle.Parent = Label
 LabelTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 LabelTitle.BackgroundTransparency = 1.000
 LabelTitle.Position = UDim2.new(0, 5, 0, 0)
@@ -3377,10 +3376,11 @@ function DiscordLib:Window(text)
 				
 				Label.Parent = ChannelHolder
 				LabelTitle.Text = text
+				LabelTitle.Parent = Label
 
 				ChannelHolder.CanvasSize = UDim2.new(0,0,0,ChannelHolderLayout.AbsoluteContentSize.Y)
 				function LabelFunction:Change(new_text)
-					print(pcall(function() LabelTitle.Text = new_text end))
+					pcall(function() LabelTitle.Text = new_text end)
 				end
                 return LabelFunction
 			end
