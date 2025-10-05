@@ -9,6 +9,8 @@ elseif UniverseId == 6884266247 then
     GameName = "animerangersx"
 elseif UniverseId == 4495671366 then
     GameName = "standpower"
+elseif UniverseId == 7326934954 then
+    GameName = "99nights"
 end
 if GameName then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/dunnook/Roblox/refs/heads/main/"..GameName))()
