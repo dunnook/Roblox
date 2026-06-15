@@ -2171,6 +2171,7 @@ function DiscordLib:Window(text)
 				end)
 				
 				Button.MouseButton1Click:Connect(function()
+					setthreadidentity(8)
 					pcall(callback)
 					Button.TextSize = 0
 					TweenService:Create(
